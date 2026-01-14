@@ -34,6 +34,10 @@ app.get(`/api/cohorts`, (req, res) => {
     });
 });
 
+// app.get(`/api/cohorts/:cohortId`, (req, res) => {
+//   Cohort.findById
+// }
+
 app.get(`/api/students`, (req, res) => {
   Student.find({})
     .then((student) => {
@@ -44,6 +48,8 @@ app.get(`/api/students`, (req, res) => {
       console.error("Error while retrieving the students", error)
     );
 });
+
+
 
 // START SERVER
 app.listen(3000, () => console.log("App listening on port 3000!"));
