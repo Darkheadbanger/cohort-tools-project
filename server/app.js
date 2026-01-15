@@ -33,7 +33,7 @@ app.post(`/api/cohorts`, (req, res) => {
     })
     .catch((error) => {
       console.error("Error while creating a new cohort", error);
-      res.status(500).send({ error: "Failed to create cohort" });
+      res.status(500).send({ errorMessage: error });
     });
 });
 
@@ -45,7 +45,7 @@ app.get(`/api/cohorts`, (req, res) => {
     })
     .catch((error) => {
       console.error("Error while retrieving the cohort =>", error);
-      res.status(500).send({ error: "Failed to retrieve cohort" });
+      res.status(500).send({ errorMessage: error });
     });
 });
 
@@ -68,7 +68,7 @@ app.put(`/api/cohorts/:cohortId`, (req, res) => {
     })
     .catch((error) => {
       console.error("Error while updating the cohort", error);
-      res.status(500).send({ errorMessage: err });
+      res.status(500).send({ errorMessage: error });
     });
 });
 
@@ -80,7 +80,7 @@ app.delete(`/api/cohorts/:cohortId`, (req, res) => {
     })
     .catch((error) => {
       console.error("Error while deleting the cohort", error);
-      res.status(500).send({ errorMessage: err });
+      res.status(500).send({ errorMessage: error });
     });
 });
 
@@ -94,7 +94,7 @@ app.post(`/api/students`, (req, res) => {
     })
     .catch((error) => {
       console.error("Error while creating a new student", error);
-      res.status(500).send({ error: "Failed to create student" });
+      res.status(500).send({ errorMessage: error });
     });
 });
 
@@ -107,7 +107,7 @@ app.get(`/api/students`, (req, res) => {
     })
     .catch((error) => {
       console.error("Error while retrieving the students", error);
-      res.status(500).send({ error: "Failed to retrieve students" });
+      res.status(500).send({ errorMessage: error });
     });
 });
 
@@ -146,7 +146,7 @@ app.put(`/api/students/:studentId`, (req, res) => {
     })
     .catch((error) => {
       console.error("Error while updating the student", error);
-      res.status(500).send({ errorMessage: err });
+      res.status(500).send({ errorMessage: error });
     });
 });
 
@@ -158,7 +158,7 @@ app.delete(`/api/students/:studentId`, (req, res) => {
     })
     .catch((error) => {
       console.error("Error while deleting the student", error);
-      res.status(500).send({ errorMessage: err });
+      res.status(500).send({ errorMessage: error });
     });
 });
 
