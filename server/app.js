@@ -4,6 +4,10 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+const {error500} = require("./error-handling/errorHandling");
+
+require("dotenv").config();
+
 // Import the model
 const Cohort = require("./models/Cohort.model");
 const Student = require("./models/Student.model");
@@ -136,10 +140,10 @@ app.delete(`/api/students/:studentId`, (req, res, next) => {
     .catch(next);
 });
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.status || 500).json({ errorMessage: err.message || err });
-});
+// Here is the handling routes
+const authRoutes = require("./routes/auth.routes");
+app.use("/auth", authRoutes);
 
+app.use(error500);
 // START SERVER
 app.listen(3000, () => console.log("App listening on port 3000!"));
