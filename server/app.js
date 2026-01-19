@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const {error500} = require("./error-handling/errorHandling");
+const { error500 } = require("./error-handling/errorHandling");
 
 require("dotenv").config();
 
@@ -112,7 +112,7 @@ app.get(`/api/students/cohort/:cohortId`, async (req, res, next) => {
 app.get(`/api/students/:studentId`, async (req, res, next) => {
   try {
     const oneStudent = await Student.findById(req.params.studentId).populate(
-      "cohort"
+      "cohort",
     );
     console.log("retrieve one Student", oneStudent);
     res.status(200).json(oneStudent);
@@ -143,6 +143,9 @@ app.delete(`/api/students/:studentId`, (req, res, next) => {
 // Here is the handling routes
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
+
+// Pas cablé
+const taskRouter = require("./routes/user.routes");
 
 app.use(error500);
 // START SERVER

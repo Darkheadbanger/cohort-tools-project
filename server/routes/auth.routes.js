@@ -42,7 +42,7 @@ router.post("/login", async (req, res, next) => {
     } else {
       const isPasswordMatch = bcryptjs.compareSync(
         password,
-        isUserInDb.password
+        isUserInDb.password,
       );
       if (!isPasswordMatch) {
         error403Credentials(res);
