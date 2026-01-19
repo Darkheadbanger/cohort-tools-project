@@ -146,6 +146,7 @@ app.use("/auth", authRoutes);
 
 // Pas cablé
 const taskRouter = require("./routes/user.routes");
+taskRouter.app("/auth", taskRouter);
 
 app.use(error500);
 // START SERVER
