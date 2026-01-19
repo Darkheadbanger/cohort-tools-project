@@ -25,4 +25,4 @@ router.get("/users/:id", isAuthenticated, async (req, res, next) => {
     res.status(500).json({ messageError: error });
   }
 });
-module.exports = router;
+module.exports = router; 
