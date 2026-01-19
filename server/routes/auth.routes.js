@@ -12,7 +12,7 @@ router.post("/signup", async (req, res, next) => {
   const { email, password } = allBody;
   try {
     const isUserInDb = await UserModel.findOne({ email });
-    if (!isUserInDb) {
+    if (isUserInDb) {
       error403Credentials(res);
       return;
     } else {
@@ -36,6 +36,7 @@ router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   const isUserInDb = await UserModel.findOne({ email });
   try {
+    // A voir ici
     if (!isUserInDb) {
       error403Credentials(res);
       return;
